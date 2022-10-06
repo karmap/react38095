@@ -1,19 +1,13 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-
-export const RMCard = ( {id, name, image} ) => {
-  return (
-    <Link to={`/ram/${id}`}>
-        <div>{name}</div>
-        <img src={image} />
-    </Link>
-  )
-}
+import { useFavs } from "../../context/FavContext"
+import { RMCard } from "./RMCard"
 
 const RMContainer = () => {
 
   const [chars, setChars] = useState([])
+
+  const {favs} = useFavs()
 
   useEffect(() => {
     getChars()
@@ -45,6 +39,7 @@ const RMContainer = () => {
   
   return (
     <div>
+        { favs.map( f => <li>{f}</li> ) }
         { chars.map( c => <RMCard key={c.id} {...c}/>)}
     </div>
   )

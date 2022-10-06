@@ -12,29 +12,41 @@ import Error404 from './components/Error404';
 import RMDetail from './components/rickmorty/RMDetail';
 import ItemList from './components/shop2/ItemList';
 import ItemDetail from './components/shop2/ItemDetail';
+import { DarkmodeContext } from './context/DarkmodeContext';
+import { useState } from 'react';
+import { FavProvider } from './context/FavContext';
 
 function App() {
+
+  const [darkmode, setDarkmode] = useState( true )
 
   const styles = {
     border: 'solid 2px blue',
     padding: '20px'
   }
 
+  const darkmodeHanlder = () => {
+    setDarkmode( !darkmode )
+  }
+
   return (
-    <>
-      <BrowserRouter>
-        <NavBar/>
-        <Routes>
-          <Route path={'/'} element={<Clicker/>} />
-          <Route path={'/ram'} element={<RMContainer/>} />
-          <Route path={'/ram/:id'} element={<RMDetail/>} />
-          <Route path={'/swapi'} element={<StarWarsContainer/>} />
-          <Route path={'/shop'} element={<ItemList/>} />
-          <Route path={'/shop/item/:id'} element={<ItemDetail/>} />
-          <Route path={'*'} element={<Error404/>} />
-        </Routes>
-      </BrowserRouter>
-    </>
+    <DarkmodeContext.Provider value={darkmode}>
+      <FavProvider>
+        <BrowserRouter>
+          <NavBar/>
+          <button className='btn' onClick={darkmodeHanlder}>darkmode</button>
+          <Routes>
+            <Route path={'/'} element={<Clicker/>} />
+            <Route path={'/ram'} element={<RMContainer/>} />
+            <Route path={'/ram/:id'} element={<RMDetail/>} />
+            <Route path={'/swapi'} element={<StarWarsContainer/>} />
+            <Route path={'/shop'} element={<ItemList/>} />
+            <Route path={'/shop/item/:id'} element={<ItemDetail/>} />
+            <Route path={'*'} element={<Error404/>} />
+          </Routes>
+        </BrowserRouter>
+      </FavProvider>
+    </DarkmodeContext.Provider>
   );
 }
 

@@ -1,6 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { DarkmodeContext } from "../context/DarkmodeContext";
 
 const Clicker = () => {
+
+  const Darkmode = useContext( DarkmodeContext )
+  console.log( Darkmode );
   
   const [counter, setCounter] = useState(0)
 
@@ -25,6 +29,9 @@ const Clicker = () => {
     <div>
       <div className="m-5">{ counter }</div>
       <button onClick={ clickHandler } className="btn m-5">Click aquí</button>
+      <div>
+        <strong>Darkmode: { Darkmode ? 'Activado' : 'Desactivado' }</strong>
+      </div>
     </div>
   )
 }

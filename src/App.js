@@ -15,6 +15,8 @@ import ItemDetail from './components/shop2/ItemDetail';
 import { DarkmodeContext } from './context/DarkmodeContext';
 import { useState } from 'react';
 import { FavProvider } from './context/FavContext';
+import CondicionalContainer from './components/condicional/CondicionalContainer';
+import Cart from './components/shop/Cart';
 
 function App() {
 
@@ -37,6 +39,8 @@ function App() {
           <button className='btn' onClick={darkmodeHanlder}>darkmode</button>
           <Routes>
             <Route path={'/'} element={<Clicker/>} />
+            <Route path={'/cart'} element={<Cart/>} />
+            <Route path={'/condicional'} element={<CondicionalContainer/>} />
             <Route path={'/ram'} element={<RMContainer/>} />
             <Route path={'/ram/:id'} element={<RMDetail/>} />
             <Route path={'/swapi'} element={<StarWarsContainer/>} />

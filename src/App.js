@@ -17,6 +17,7 @@ import { useState } from 'react';
 import { FavProvider } from './context/FavContext';
 import CondicionalContainer from './components/condicional/CondicionalContainer';
 import Cart from './components/shop/Cart';
+import ListContainer from './components/firebase-example/ListContainer';
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
           <button className='btn' onClick={darkmodeHanlder}>darkmode</button>
           <Routes>
             <Route path={'/'} element={<Clicker/>} />
+            <Route path={'/firebase'} element={<ListContainer/>} />
             <Route path={'/cart'} element={<Cart/>} />
             <Route path={'/condicional'} element={<CondicionalContainer/>} />
             <Route path={'/ram'} element={<RMContainer/>} />

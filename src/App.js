@@ -18,6 +18,7 @@ import { FavProvider } from './context/FavContext';
 import CondicionalContainer from './components/condicional/CondicionalContainer';
 import Cart from './components/shop/Cart';
 import ListContainer from './components/firebase-example/ListContainer';
+import Order from './components/shop2/Order';
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
             <Route path={'/ram/:id'} element={<RMDetail/>} />
             <Route path={'/swapi'} element={<StarWarsContainer/>} />
             <Route path={'/shop'} element={<ItemList/>} />
+            <Route path={'/shop/order'} element={<Order/>} />
             <Route path={'/shop/item/:id'} element={<ItemDetail/>} />
             <Route path={'*'} element={<Error404/>} />
           </Routes>
